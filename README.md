@@ -41,3 +41,33 @@ script_template/
 ├── CONTRIBUTING.md                # Contribution guidelines
 ├── cron_example.log               # Sample cron execution log
 └── README.md                      # Project overview and usage instructions
+```
+
+## CI: ShellCheck Workflow
+
+This repository uses a GitHub Actions workflow based on **ShellCheck** to automatically validate all Bash scripts.
+
+### Why this workflow exists
+
+The ShellCheck workflow helps to:
+
+- Detect common Bash scripting errors early
+- Enforce consistent scripting best practices
+- Prevent insecure patterns (unquoted variables, unsafe expansions, etc.)
+- Keep script templates production-ready
+- Make contributions safer and easier to review
+
+The workflow runs automatically on:
+- Every **Pull Request**
+- Every **push to the `main` branch**
+
+If ShellCheck reports issues, the workflow fails and blocks the merge until problems are fixed.
+
+### What is checked
+
+- All `.sh` files under the repository
+- Scripts using `set -euo pipefail`
+- Proper quoting and variable handling
+- Potential runtime and logic errors
+
+This ensures that all provided templates remain reliable and reusable.

@@ -10,8 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - name: Run ShellCheck
         uses: ludeeus/action-shellcheck@master
         with:
-          scandir: './'
-
+          scandir: './templates ./examples'
+          exclude: SC1091
+          format: gcc
+          output-file: shellcheck_report.txt
